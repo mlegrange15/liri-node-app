@@ -19,15 +19,15 @@ function liriCommands(commandName, userRequest) {
       break;
 
     case "my-tweets":
-      getTweets(userRequest);
+      myTweets(userRequest);
       break;
 
     case "movie-this":
-      getMovie(userRequest);
+      movie(userRequest);
       break;
 
     case "do-what-it-says":
-      getRandom();
+      doRandom();
       break;
 
     default:
@@ -39,7 +39,7 @@ function liriCommands(commandName, userRequest) {
 function spotifyThisSong(song) {
   spotify = new Spotify(keysINeed.spotify);
 
-  spotify.search({type: 'track', query: song}, function (err, data) {
+  spotify.search({ type: 'track', query: song }, function (err, data) {
     if (err) {
       console.log(err);
     }
@@ -60,18 +60,73 @@ function spotifyThisSong(song) {
 };
 
 
-// TWITTER FUNCTION
-var params = {screen_name: userRequest, count: 20};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
+// TWITTER MY TWEETS FUNCTION
+function myTweets(handle) {
+
+  client = new Twitter(keysINeed.twitter);
+
+  var params = { screen_name: handle, count: 20 };
+  client.get('statuses/user_timeline', params, function (error, tweets, response) {
+    if (!error) {
+
+      for (i = 0; i < tweets.length; i++) {
+
+        console.log("Date: " + tweets[i].created_at + "\n --> " + tweets[i].text);
+      }
+    }
+  });
+}
+
+// MOVIE FUNCTION
+function movie(movie) {
+
+  var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+  if (!movie) {
+    movie = "Mr Nobody";
   }
 
+  request(queryUrl, function (error, response, body) {
 
-});
+    if (!error && response.statusCode === 200) {
+
+      console.log(JSON.parse(body));
+      console.log("Title: " + JSON.parse(body).Title +
+        "\nYear: " + JSON.parse(body).Year +
+        "\nIMDB Rating: " + JSON.parse(body).imdbRating +
+        "\nRotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value +
+        "\nCountry: " + JSON.parse(body).Country +
+        "\nLanguage: " + JSON.parse(body).Language +
+        "\nPlot: " + JSON.parse(body).Plot +
+        "\nActors: " + JSON.parse(body).Actors);
+    } else {
+      console.log(error);
+    }
+  });
+}
+
+// DO SOMETHING RANDOM FUNCTION
+function doRandom() {
+
+  fs.readFile("random.txt", "utf8", function (error, data) {
+
+    var randomData = data.split(',');
+
+    if (error) {
+      console.log(error);
+
+    } else {
+      console.log(data);
+      console.log(randomData);
+
+      liriCommands(randomData[0], randomData[1]);
+    }
+  });
+}
+
 
 // Calling function to accept user commands
-liriCommands(commandName,userRequest);
+liriCommands(commandName, userRequest);
 
 // Sends the data we get back from our commands to the log.txt file
 function log(data) {
