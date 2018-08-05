@@ -17,7 +17,8 @@ function liriCommands(commandName, userRequest) {
     case "spotify-this-song":
       spotifyThisSong(userRequest);
       break;
-
+    // userRequest will need to be any valid twitter handle
+    // You can use mine michaeldev7
     case "my-tweets":
       myTweets(userRequest);
       break;
@@ -51,10 +52,11 @@ function spotifyThisSong(song) {
     var logSong = "\nNew Song:\nThe artist is: " + data.tracks.items[0].artists[0].name +
       "\nThe name of the song is: " + data.tracks.items[0].name +
       "\nHere is a preview link: " + data.tracks.items[0].preview_url +
-      "\nThe name of the album is: " + data.tracks.items[0].album.name + "\n";
+      "\nThe name of the album is: " + data.tracks.items[0].album.name +
+      "\n--------------------------------------\n";
 
-      console.log(logSong);
-      
+    console.log(logSong);
+
 
     fs.appendFile('log.txt', logSong, function (err) {
       if (err) throw err;
@@ -63,6 +65,8 @@ function spotifyThisSong(song) {
 };
 
 // TWITTER MY TWEETS FUNCTION
+// userRequest or handle will need to be any valid twitter handle
+// You can use mine michaeldev7
 function myTweets(handle) {
 
   client = new Twitter(keysINeed.twitter);
@@ -72,11 +76,12 @@ function myTweets(handle) {
     if (!error) {
 
       for (i = 0; i < tweets.length; i++) {
-        
-        var myTwitter = ("\nTweet:\nDate: " + tweets[i].created_at + "\n --> " + tweets[i].text + "\n");
+
+        var myTwitter = ("\nTweet:\nDate: " + tweets[i].created_at + "\n --> " + tweets[i].text +
+          "\n--------------------------------------\n");
 
         console.log(myTwitter);
-        
+
 
         fs.appendFile('log.txt', myTwitter, function (err) {
           if (err) throw err;
@@ -108,10 +113,11 @@ function movie(movie) {
         "\nCountry: " + data.Country +
         "\nLanguage: " + data.Language +
         "\nPlot: " + data.Plot +
-        "\nActors: " + data.Actors + "\n";
+        "\nActors: " + data.Actors +
+        "\n--------------------------------------\n";
 
-        console.log(logMovie);
-        
+      console.log(logMovie);
+
 
       fs.appendFile('log.txt', logMovie, function (err) {
         if (err) throw err;
