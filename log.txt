@@ -1,14 +1,42 @@
 
+
+My last 20 tweets:
 Date: Mon Jul 30 17:01:18 +0000 2018
  --> 3rd times the charm
 
+My last 20 tweets:
 Date: Mon Jul 30 16:58:58 +0000 2018
  --> I am crushing it at Twitter
 
+My last 20 tweets:
 Date: Mon Jul 30 16:58:40 +0000 2018
  --> Whoo hooo! First tweet!
 
-The artist is: Backstreet Boys
-The name of the song is: I Want It That Way
-Here is a preview link: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=0c4e0c3daae7401e8438a4bd105d7d43
-The name of the album is: The Hits--Chapter One
+Tweet:
+Date: Mon Jul 30 17:01:18 +0000 2018
+ --> 3rd times the charm
+
+Tweet:
+Date: Mon Jul 30 16:58:58 +0000 2018
+ --> I am crushing it at Twitter
+
+Tweet:
+Date: Mon Jul 30 16:58:40 +0000 2018
+ --> Whoo hooo! First tweet!
+
+Title: Remember the Titans
+Year: 2000
+IMDB Rating: 7.8
+Country: USA
+Language: English
+Plot: The true story of a newly appointed African-American coach and his high school team on their first season as a racially integrated unit.
+Actors: Denzel Washington, Will Patton, Wood Harris, Ryan Hurst
+
+NewMovie:
+Title: Mr. Nobody
+Year: 2009
+IMDB Rating: 7.9
+Country: Belgium, Germany, Canada, France, USA, UK
+Language: English, Mohawk
+Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham

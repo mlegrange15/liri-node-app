@@ -48,15 +48,13 @@ function spotifyThisSong(song) {
       console.log(err);
     }
 
-    console.log("\nThe artist is: " + data.tracks.items[0].artists[0].name +
-      "\nThe name of the song is: " + data.tracks.items[0].name +
-      "\nHere is a preview link: " + data.tracks.items[0].preview_url +
-      "\nThe name of the album is: " + data.tracks.items[0].album.name);
-
-    var logSong = "\nThe artist is: " + data.tracks.items[0].artists[0].name +
+    var logSong = "\nNew Song:\nThe artist is: " + data.tracks.items[0].artists[0].name +
       "\nThe name of the song is: " + data.tracks.items[0].name +
       "\nHere is a preview link: " + data.tracks.items[0].preview_url +
       "\nThe name of the album is: " + data.tracks.items[0].album.name + "\n";
+
+      console.log(logSong);
+      
 
     fs.appendFile('log.txt', logSong, function (err) {
       if (err) throw err;
@@ -74,10 +72,11 @@ function myTweets(handle) {
     if (!error) {
 
       for (i = 0; i < tweets.length; i++) {
+        
+        var myTwitter = ("\nTweet:\nDate: " + tweets[i].created_at + "\n --> " + tweets[i].text + "\n");
 
-        console.log("\nDate: " + tweets[i].created_at + "\n --> " + tweets[i].text + "\n");
-
-        var myTwitter = ("\nDate: " + tweets[i].created_at + "\n --> " + tweets[i].text + "\n");
+        console.log(myTwitter);
+        
 
         fs.appendFile('log.txt', myTwitter, function (err) {
           if (err) throw err;
@@ -102,16 +101,7 @@ function movie(movie) {
 
       var data = JSON.parse(body);
 
-      console.log("\nTitle: " + data.Title +
-        "\nYear: " + data.Year +
-        "\nIMDB Rating: " + data.imdbRating +
-        // "\nRotten Tomatoes Rating: " + data.Ratings[1].Value +
-        "\nCountry: " + data.Country +
-        "\nLanguage: " + data.Language +
-        "\nPlot: " + data.Plot +
-        "\nActors: " + data.Actors);
-
-      var logMovie = "\nTitle: " + data.Title +
+      var logMovie = "\nNew Movie:\nTitle: " + data.Title +
         "\nYear: " + data.Year +
         "\nIMDB Rating: " + data.imdbRating +
         // "\nRotten Tomatoes Rating: " + data.Ratings[1].Value +
@@ -119,6 +109,9 @@ function movie(movie) {
         "\nLanguage: " + data.Language +
         "\nPlot: " + data.Plot +
         "\nActors: " + data.Actors + "\n";
+
+        console.log(logMovie);
+        
 
       fs.appendFile('log.txt', logMovie, function (err) {
         if (err) throw err;
